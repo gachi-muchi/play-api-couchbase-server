@@ -1,0 +1,2 @@
+play-api-couchbase-server
+=========================
