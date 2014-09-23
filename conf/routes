@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Token
+POST    /auth/token                       @controllers.AuthController.createToken()
+GET     /auth/token/:tokenId              @controllers.AuthController.confirmToken(tokenId: String)
+DELETE  /auth/token/:tokenId              @controllers.AuthController.deleteToken(tokenId: String)
+
+# article
+POST    /blog/:userId/article             @controllers.ArticleController.create(userId: String)
+GET     /blog/:userId/article             @controllers.ArticleController.list(userId: String, offset: Integer ?=0, limit: Integer ?=10)
+GET     /blog/:userId/article/:articleId  @controllers.ArticleController.read(userId: String, articleId: String)
+PUT     /blog/:userId/article/:articleId  @controllers.ArticleController.update(userId: String, articleId: String)
+DELETE  /blog/:userId/article/:articleId  @controllers.ArticleController.delete(userId: String, articleId: String)
+
+# like
+POST    /blog/:userId/article/:articleId/like @controllers.ArticleController.like(userId: String, articleId: String)
+GET     /blog/:userId/article/:articleId/like @controllers.ArticleController.getLikeCount(userId: String, articleId: String)
+DELETE  /blog/:userId/article/:articleId/like @controllers.ArticleController.unLike(userId: String, articleId: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

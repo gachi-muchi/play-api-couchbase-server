@@ -1,2 +1,4 @@
-play-api-couchbase-server
-=========================
+play-app-server
+===============
+
+play-app-server
